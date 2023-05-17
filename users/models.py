@@ -2,12 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 
 class CustomUserManager(BaseUserManager):
-    
     def create_user(self, username, email=None, password=None):
         if not username:
             raise ValueError('Users must have username value')
-        if email is not None:
-            parsed_email = self.normalize_email(email)
         else:
             parsed_email = ''
         user = self.model(
